@@ -8,6 +8,9 @@ soap.createClient(url, function(err, client) {
     return;
   }
 
+  // Para depuração: Veja a estrutura do serviço
+  console.log(client.describe());
+
   // Teste de adição
   client.add({ a: 5, b: 3 }, function(err, result) {
     if (err) console.error('Erro em add:', err.message);

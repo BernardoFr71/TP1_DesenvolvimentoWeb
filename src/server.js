@@ -11,8 +11,8 @@ function validateInputs(a, b) {
 
 // Serviço com operações
 const arithmeticService = {
-  ArithmeticPortType: {
-    ArithmeticPort: {
+  ArithmeticService: {  // Nome do service do WSDL
+    ArithmeticPort: {  // Nome do port do WSDL
       add: function(args) {
         validateInputs(args.a, args.b);
         return { result: args.a + args.b };
