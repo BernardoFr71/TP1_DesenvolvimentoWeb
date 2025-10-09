@@ -6,57 +6,40 @@
              xmlns:xsd="http://www.w3.org/2001/XMLSchema"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
 
-  <types>
-    <xsd:schema targetNamespace="http://example.com/arithmetic">
-      <xsd:complexType name="OperationRequest">
-        <xsd:sequence>
-          <xsd:element name="a" type="xsd:double"/>
-          <xsd:element name="b" type="xsd:double"/>
-        </xsd:sequence>
-      </xsd:complexType>
-      <xsd:complexType name="OperationResponse">
-        <xsd:sequence>
-          <xsd:element name="result" type="xsd:double"/>
-        </xsd:sequence>
-      </xsd:complexType>
-      <xsd:complexType name="FaultResponse">
-        <xsd:sequence>
-          <xsd:element name="error" type="xsd:string"/>
-        </xsd:sequence>
-      </xsd:complexType>
-    </xsd:schema>
-  </types>
-
   <message name="AddRequest">
-    <part name="parameters" type="tns:OperationRequest"/>
+    <part name="a" type="xsd:double"/>
+    <part name="b" type="xsd:double"/>
   </message>
   <message name="AddResponse">
-    <part name="parameters" type="tns:OperationResponse"/>
+    <part name="result" type="xsd:double"/>
   </message>
 
   <message name="SubtractRequest">
-    <part name="parameters" type="tns:OperationRequest"/>
+    <part name="a" type="xsd:double"/>
+    <part name="b" type="xsd:double"/>
   </message>
   <message name="SubtractResponse">
-    <part name="parameters" type="tns:OperationResponse"/>
+    <part name="result" type="xsd:double"/>
   </message>
 
   <message name="MultiplyRequest">
-    <part name="parameters" type="tns:OperationRequest"/>
+    <part name="a" type="xsd:double"/>
+    <part name="b" type="xsd:double"/>
   </message>
   <message name="MultiplyResponse">
-    <part name="parameters" type="tns:OperationResponse"/>
+    <part name="result" type="xsd:double"/>
   </message>
 
   <message name="DivideRequest">
-    <part name="parameters" type="tns:OperationRequest"/>
+    <part name="a" type="xsd:double"/>
+    <part name="b" type="xsd:double"/>
   </message>
   <message name="DivideResponse">
-    <part name="parameters" type="tns:OperationResponse"/>
+    <part name="result" type="xsd:double"/>
   </message>
 
   <message name="FaultMessage">
-    <part name="parameters" type="tns:FaultResponse"/>
+    <part name="error" type="xsd:string"/>
   </message>
 
   <portType name="ArithmeticPortType">
