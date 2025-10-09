@@ -1,0 +1,23 @@
+{
+  "name": "tp1_desenvolvimentoweb",
+  "version": "1.0.0",
+  "description": "Desenvolver um serviço web utilizando o protocolo SOAP em Node.js, capaz de realizar  as quatro operações aritméticas básicas: adição, subtração, multiplicação e divisão.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BernardoFr71/TP1_DesenvolvimentoWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BernardoFr71/TP1_DesenvolvimentoWeb/issues"
+  },
+  "homepage": "https://github.com/BernardoFr71/TP1_DesenvolvimentoWeb#readme",
+  "dependencies": {
+    "soap": "^1.5.0"
+  }
+}
