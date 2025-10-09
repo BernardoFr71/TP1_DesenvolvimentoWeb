@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ArithmeticService"
+             targetNamespace="http://example.com/arithmetic"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://example.com/arithmetic"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+  <types>
+    <xsd:schema targetNamespace="http://example.com/arithmetic">
+      <xsd:complexType name="OperationRequest">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:double"/>
+          <xsd:element name="b" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OperationResponse">
+        <xsd:sequence>
+          <xsd:element name="result" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="FaultResponse">
+        <xsd:sequence>
+          <xsd:element name="error" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+
+  <message name="AddRequest">
+    <part name="parameters" type="tns:OperationRequest"/>
+  </message>
+  <message name="AddResponse">
+    <part name="parameters" type="tns:OperationResponse"/>
+  </message>
+
+  <message name="SubtractRequest">
+    <part name="parameters" type="tns:OperationRequest"/>
+  </message>
+  <message name="SubtractResponse">
+    <part name="parameters" type="tns:OperationResponse"/>
+  </message>
+
+  <message name="MultiplyRequest">
+    <part name="parameters" type="tns:OperationRequest"/>
+  </message>
+  <message name="MultiplyResponse">
+    <part name="parameters" type="tns:OperationResponse"/>
+  </message>
+
+  <message name="DivideRequest">
+    <part name="parameters" type="tns:OperationRequest"/>
+  </message>
+  <message name="DivideResponse">
+    <part name="parameters" type="tns:OperationResponse"/>
+  </message>
+
+  <message name="FaultMessage">
+    <part name="parameters" type="tns:FaultResponse"/>
+  </message>
+
+  <portType name="ArithmeticPortType">
+    <operation name="add">
+      <input message="tns:AddRequest"/>
+      <output message="tns:AddResponse"/>
+      <fault name="Fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="subtract">
+      <input message="tns:SubtractRequest"/>
+      <output message="tns:SubtractResponse"/>
+      <fault name="Fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="multiply">
+      <input message="tns:MultiplyRequest"/>
+      <output message="tns:MultiplyResponse"/>
+      <fault name="Fault" message="tns:FaultMessage"/>
+    </operation>
+    <operation name="divide">
+      <input message="tns:DivideRequest"/>
+      <output message="tns:DivideResponse"/>
+      <fault name="Fault" message="tns:FaultMessage"/>
+    </operation>
+  </portType>
+
+  <binding name="ArithmeticBinding" type="tns:ArithmeticPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="add">
+      <soap:operation soapAction="add"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+      <fault name="Fault"><soap:fault use="literal"/></fault>
+    </operation>
+    <operation name="subtract">
+      <soap:operation soapAction="subtract"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+      <fault name="Fault"><soap:fault use="literal"/></fault>
+    </operation>
+    <operation name="multiply">
+      <soap:operation soapAction="multiply"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+      <fault name="Fault"><soap:fault use="literal"/></fault>
+    </operation>
+    <operation name="divide">
+      <soap:operation soapAction="divide"/>
+      <input><soap:body use="literal"/></input>
+      <output><soap:body use="literal"/></output>
+      <fault name="Fault"><soap:fault use="literal"/></fault>
+    </operation>
+  </binding>
+
+  <service name="ArithmeticService">
+    <port name="ArithmeticPort" binding="tns:ArithmeticBinding">
+      <soap:address location="http://localhost:8000/arithmetic"/>
+    </port>
+  </service>
+</definitions>
