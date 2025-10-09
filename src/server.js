@@ -2,35 +2,38 @@ const soap = require('soap');
 const http = require('http');
 const fs = require('fs');
 
-// Função de validação
+// Função de validação com parsing
 function validateInputs(a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number' || isNaN(a) || isNaN(b)) {
+  const numA = parseFloat(a);
+  const numB = parseFloat(b);
+  if (isNaN(numA) || isNaN(numB)) {
     throw new Error('Parâmetros devem ser números válidos.');
   }
+  return { numA, numB }; // Retorna os números parseados
 }
 
 // Serviço com operações
 const arithmeticService = {
-  ArithmeticService: {  // Nome do service do WSDL
-    ArithmeticPort: {  // Nome do port do WSDL
+  ArithmeticService: {
+    ArithmeticPort: {
       add: function(args) {
-        validateInputs(args.a, args.b);
-        return { result: args.a + args.b };
+        const { numA, numB } = validateInputs(args.a, args.b);
+        return { result: numA + numB };
       },
       subtract: function(args) {
-        validateInputs(args.a, args.b);
-        return { result: args.a - args.b };
+        const { numA, numB } = validateInputs(args.a, args.b);
+        return { result: numA - numB };
       },
       multiply: function(args) {
-        validateInputs(args.a, args.b);
-        return { result: args.a * args.b };
+        const { numA, numB } = validateInputs(args.a, args.b);
+        return { result: numA * numB };
       },
       divide: function(args) {
-        validateInputs(args.a, args.b);
-        if (args.b === 0) {
+        const { numA, numB } = validateInputs(args.a, args.b);
+        if (numB === 0) {
           throw new Error('Divisão por zero não permitida.');
         }
-        return { result: args.a / args.b };
+        return { result: numA / numB };
       }
     }
   }
