@@ -120,4 +120,6 @@ Execute o cliente e verifique os logs no terminal para confirmar o funcionamento
 ## Contribuições e Contacto
 Para sugestões ou correções, abra uma issue no repositório GitHub. Este projeto foi desenvolvido para fins académicos.
 
+Bernardo Freitas
+
 Data de Entrega: 26 de outubro de 2025.
